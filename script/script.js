@@ -4,8 +4,10 @@ let last;
 let first;
 win_condition=[[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7],[1,4,7],[2,5,8],[3,6,9]]
 potato_turns=[];
+user_turns=[];
 let t;
 let win;
+let win_point;
 let config = {
     height:window.innerHeight -8,
     width:window.innerWidth -8,
@@ -57,19 +59,20 @@ function potato(){
         throw new Error('turn over')
     }
     if(turn==1){
-        first=parseInt(last);
-        if(last==5){
+        first=parseInt(user_turns[user_turns.length-1]);
+        if(user_turns[user_turns.length-1]==5){
             corner()
         }else{
             mid()
         }
-    }else if(turn==2 && first==5){
-        opposite()
-    }else if(turn>=3){
-        if(win_check){
-            win.alpha=1;
-            console.log('wins');
-            win_check();
+    }else if(turn>=2){
+        if(win_check()){
+            setTimeout(function(){
+                win.alpha=1;
+                document.getElementById(win_point).innerText = "0";
+                potato_turns.push(win_point);
+            },700)
+            
         }else{
             opposite();
             
@@ -89,6 +92,7 @@ function type(index){
         allow=false;
         turn+=1;
         t.setText(turn);
+        user_turns.push(index);
         potato()
     }
 }
@@ -178,15 +182,15 @@ function win_check(){
                 count+=1;
             }
         }
+        if(count==3){
+            document.write("game Over")
+        }
         if(count==2){
-            setTimeout(function(){
-                if(checkempty(win_condition[j][point.indexOf(false)])){
-                    document.getElementById(win_condition[j][point.indexOf(false)]).innerText = "0";
-                    potato_turns.push(win_condition[j][point.indexOf(false)])
-                    console.log('win-check')
-                    return true
-                }
-            },700)
+            if(checkempty(win_condition[j][point.indexOf(false)])){
+                console.log('win-check')
+                win_point=win_condition[j][point.indexOf(false)];
+                return true
+            }
             //console.log(win_condition[j],potato_turns,point)
         }
     }
