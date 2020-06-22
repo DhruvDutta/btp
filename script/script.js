@@ -65,11 +65,17 @@ function potato(){
     }else if(turn>=3){
         if(win_check()){
             win.alpha=1;
+            win_check()
+            
         }else{
-            opposite()
+            //opposite()
+            console.log('nowin')
         }
         
     }
+    //setTimeout(function(){
+    //    console.log(potato_turns)
+    //},720);
     
 }
 
@@ -153,11 +159,12 @@ function win_check(){
             setTimeout(function(){
                 if(checkempty(win_condition[j][point.indexOf(false)])){
                     document.getElementById(win_condition[j][point.indexOf(false)]).innerText = "0";
+                    potato_turns.push(win_condition[j][point.indexOf(false)])
                 }
             },700)
-            //console.log(win_condition[j],potato_turns,point)
+            console.log(win_condition[j],potato_turns,point)
             return true
         }
-        return false
     }
+    return false
 }
