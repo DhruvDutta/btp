@@ -49,10 +49,13 @@ function create(){
     win.alpha=0;
 }
 function update(){
-    
+
 }
 
 function potato(){
+    if(turn==5){
+        throw new Error('turn over')
+    }
     if(turn==1){
         first=parseInt(last);
         if(last==5){
@@ -63,13 +66,13 @@ function potato(){
     }else if(turn==2 && first==5){
         opposite()
     }else if(turn>=3){
-        if(win_check()){
+        if(win_check){
             win.alpha=1;
-            win_check()
-            
+            console.log('wins');
+            win_check();
         }else{
-            //opposite()
-            console.log('nowin')
+            opposite();
+            
         }
         
     }
@@ -95,10 +98,15 @@ function opposite(){
         setTimeout(function(){
             document.getElementById(10-last).innerText = '0';
             allow=true;
-            potato_turns.push(10-last)
+            potato_turns.push(10-last);
+            console.log('opposite')
         },700)
     }else{
-        corner()
+        if(corners_full()){
+            facecenter()
+        }else{
+            corner()
+        }
     }
 }
 function mid(){
@@ -117,11 +125,26 @@ function corner(){
     if(checkempty(pos[r])){
         setTimeout(function(){
             document.getElementById(pos[r]).innerText = '0';
-        allow=true;
-        potato_turns.push(pos[r]);
+            allow=true;
+            potato_turns.push(pos[r]);
+            console.log('corner')
         },700)
     }else{
-        corner()
+        corner();
+    }
+}
+function facecenter(){
+    let pos = [2,4,6,8];
+    let r = Math.floor(Math.random()*4);
+    if(checkempty(pos[r])){
+        setTimeout(function(){
+            document.getElementById(pos[r]).innerText = '0';
+            allow=true;
+            potato_turns.push(pos[r]);
+            console.log('facecenter')
+        },700)
+    }else{
+        facecenter();
     }
 }
 function checkempty(index){
@@ -160,11 +183,20 @@ function win_check(){
                 if(checkempty(win_condition[j][point.indexOf(false)])){
                     document.getElementById(win_condition[j][point.indexOf(false)]).innerText = "0";
                     potato_turns.push(win_condition[j][point.indexOf(false)])
+                    console.log('win-check')
+                    return true
                 }
             },700)
-            console.log(win_condition[j],potato_turns,point)
-            return true
+            //console.log(win_condition[j],potato_turns,point)
         }
+    }
+    return false
+}
+
+function corners_full(){
+    if(document.getElementById(1).innerText!='' && document.getElementById(3).innerText!='' && document.getElementById(7).innerText!='' && document.getElementById(9).innerText!=''){
+        console.log('corners Full');
+        return true
     }
     return false
 }
