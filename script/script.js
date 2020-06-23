@@ -91,8 +91,19 @@ function potato(){
                 win_check()
             },700)
             
-        }else{
-            
+        }else if(turn==2 && fc.includes(user_turns[1])){
+            console.log('trick')
+            setTimeout(function(){
+                if(checkempty(10-user_turns[0])){
+                    document.getElementById(10-user_turns[0]).innerText = '0';
+                    allow=true;
+                    potato_turns.push(10-user_turns[0])
+                }
+                
+            },700)
+        }
+        
+        else{
             console.log('wincheck false')
             opposite();
             
