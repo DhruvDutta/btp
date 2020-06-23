@@ -34,7 +34,7 @@ function create(){
     let H = game.config.height;
     let div1 = document.createElement('div');
     t = this.add.text(W/2,50,turn)
-    t.alpha=1;
+    t.alpha=0;
     
     div1.setAttribute('class','game');
     div1.style = `width:${Math.min(W,H)-70}px;height:${Math.min(W,H)-70}px`;
