@@ -10,6 +10,10 @@ let win;
 let win_point;
 let corns = [1,3,7,9];
 let fc = [2,4,6,8];
+let gif;
+celebrate=['<img src="script/dance.gif">','<img style="margin-left:-3em;" src="script/dance2.gif">','<img src="script/trump.png" height="50%">']
+celeb=celebrate[Math.round(Math.random()*2)]
+celeb=celebrate[1];
 let config = {
     height:window.innerHeight -8,
     width:window.innerWidth -8,
@@ -27,7 +31,7 @@ let config = {
 }
 let game = new Phaser.Game(config);
 function preload(){
-
+    
 }
 function create(){
     let W = game.config.width;
@@ -51,6 +55,11 @@ function create(){
     var element1 = this.add.dom(W/2, H/2, div1);
     win = this.add.text(W/2,100,'Win',{font:'20px '})
     win.alpha=0;
+    var dance = document.createElement('img');
+    dance.setAttribute('src','script/dance2.gif');
+    dance.style ='height:50vh;'
+    //gif = this.add.dom(0,65,dance);
+    //gif.alpha=1;
 }
 function update(){
 
@@ -59,7 +68,7 @@ function update(){
 function potato(){
     if(turn==5){
         setTimeout(function(){
-            document.write('<center><h1>Draw</h1><center>')
+            document.write(`<center><h1>Draw</h1>${celeb}<center>`)
             throw new Error("Draw")
         },700)
     }
@@ -195,7 +204,9 @@ function win_check(){
         }
         if(count==3){
             //document.write("game Over")
-            alert('game over')
+            setTimeout(function(){
+                document.write(`<center><h1>Game Over</h1><img src="script/trump.png" height="50%"><center>`)
+            },700)
             allow=false
         }
         if(count==2){
@@ -230,7 +241,7 @@ function win_check(){
         }
         console.log('count '+count)
         if(count==3){
-            document.write("game Over")
+            document.write('<center><h1>You Win</h1><img src="script/good.png"><center>')
         }
         if(count==2){
             if(checkempty(win_condition[j][point.indexOf(false)])){
