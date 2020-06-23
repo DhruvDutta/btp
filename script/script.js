@@ -34,7 +34,7 @@ function create(){
     let H = game.config.height;
     let div1 = document.createElement('div');
     t = this.add.text(W/2,50,turn)
-    t.alpha=0;
+    t.alpha=1;
     
     div1.setAttribute('class','game');
     div1.style = `width:${Math.min(W,H)-70}px;height:${Math.min(W,H)-70}px`;
@@ -115,7 +115,7 @@ function opposite(){
             console.log('opposite')
         },700)
     }else{
-        if(oppocorns()){
+        if(oppocorns() || corners_full()){
             facecenter()
         }else{
             corner()
