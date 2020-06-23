@@ -60,6 +60,7 @@ function potato(){
     if(turn==5){
         setTimeout(function(){
             document.write('<center><h1>Draw</h1><center>')
+            throw new Error("Draw")
         },700)
     }
     if(turn==1){
@@ -221,6 +222,7 @@ function win_check(){
                 count+=1;
             }
         }
+        console.log('count '+count)
         if(count==3){
             document.write("game Over")
         }
@@ -229,13 +231,12 @@ function win_check(){
                 console.log('loose-check')
                 win_point=win_condition[j][point.indexOf(false)];
                 return true
-            }else{
-                console.log('false_aya_frse')
-                return false
             }
             //console.log(win_condition[j],potato_turns,point)
         }
     }
+    console.log('false_aya_frse')
+    return false
     
 }
 
