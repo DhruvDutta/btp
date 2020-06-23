@@ -77,9 +77,11 @@ function potato(){
                 document.getElementById(win_point).innerText = "0";
                 potato_turns.push(win_point);
                 allow=true
+                win_check()
             },700)
             
         }else{
+            
             console.log('wincheck false')
             opposite();
             
@@ -113,7 +115,7 @@ function opposite(){
             console.log('opposite')
         },700)
     }else{
-        if(corners_full()){
+        if(oppocorns()){
             facecenter()
         }else{
             corner()
@@ -246,4 +248,17 @@ function corners_full(){
         return true
     }
     return false
+}
+
+function oppocorns(){
+    if(document.getElementById(1).innerText=='X' && document.getElementById(9).innerText=='X'){
+        //console.log('oppocorns 1 9')
+        return true
+    }else if(document.getElementById(3).innerText=='X' && document.getElementById(7).innerText=='X'){
+        //console.log('oppocorns 3 7')
+        return true
+    }else{
+        //console.log('oppocorns False')
+        return false
+    }
 }
