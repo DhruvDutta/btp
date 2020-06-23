@@ -92,7 +92,7 @@ function potato(){
             },700)
             
         }else if(turn==2 && fc.includes(user_turns[1])){
-            console.log('trick')
+            //console.log('trick')
             setTimeout(function(){
                 if(checkempty(10-user_turns[0])){
                     document.getElementById(10-user_turns[0]).innerText = '0';
@@ -104,15 +104,15 @@ function potato(){
         }
         
         else{
-            console.log('wincheck false')
+            //console.log('wincheck false')
             opposite();
             
         }
         
     }
-    setTimeout(function(){
-        console.log(potato_turns)
-    },720);
+    //setTimeout(function(){
+    //    console.log(potato_turns)
+    //},720);
     
 }
 
@@ -134,7 +134,7 @@ function opposite(){
             document.getElementById(oppo).innerText = '0';
             allow=true;
             potato_turns.push(oppo);
-            console.log('opposite')
+            //console.log('opposite')
         },700)
     }else{
         if(oppocorns() || corners_full()){
@@ -162,7 +162,7 @@ function corner(){
             document.getElementById(corns[r]).innerText = '0';
             allow=true;
             potato_turns.push(corns[r]);
-            console.log('corner')
+            //console.log('corner')
         },700)
     }else{
         corner();
@@ -175,7 +175,7 @@ function facecenter(){
             document.getElementById(fc[r]).innerText = '0';
             allow=true;
             potato_turns.push(fc[r]);
-            console.log('facecenter')
+            //console.log('facecenter')
         },700)
     }else{
         facecenter();
@@ -222,7 +222,7 @@ function win_check(){
         }
         if(count==2){
             if(checkempty(win_condition[j][point.indexOf(false)])){
-                console.log('win-check')
+                //console.log('win-check')
                 win_point=win_condition[j][point.indexOf(false)];
                 return true
             }
@@ -233,15 +233,15 @@ function win_check(){
         let point = [false,false,false];
         if(user_turns.includes(parseInt(win_condition[j][0]))){
             point[0]=true
-            console.log(user_turns,' includes: ',win_condition[j][0])
+            //console.log(user_turns,' includes: ',win_condition[j][0])
         }
         if(user_turns.includes(parseInt(win_condition[j][1]))){
             point[1]=true
-            console.log(user_turns,' includes: ',win_condition[j][1])
+            //console.log(user_turns,' includes: ',win_condition[j][1])
         }
         if(user_turns.includes(parseInt(win_condition[j][2]))){
             point[2]=true
-            console.log(user_turns,' includes: ',win_condition[j][2])
+            //console.log(user_turns,' includes: ',win_condition[j][2])
 
         }
         let count=0;
@@ -250,27 +250,27 @@ function win_check(){
                 count+=1;
             }
         }
-        console.log('count '+count)
+        //console.log('count '+count)
         if(count==3){
             document.write('<center><h1>You Win</h1><img src="script/good.png"><center>')
         }
         if(count==2){
             if(checkempty(win_condition[j][point.indexOf(false)])){
-                console.log('loose-check')
+                //console.log('loose-check')
                 win_point=win_condition[j][point.indexOf(false)];
                 return true
             }
             //console.log(win_condition[j],potato_turns,point)
         }
     }
-    console.log('false_aya_frse')
+    //console.log('false_aya_frse')
     return false
     
 }
 
 function corners_full(){
     if(document.getElementById(1).innerText!='' && document.getElementById(3).innerText!='' && document.getElementById(7).innerText!='' && document.getElementById(9).innerText!=''){
-        console.log('corners Full');
+        //console.log('corners Full');
         return true
     }
     return false
