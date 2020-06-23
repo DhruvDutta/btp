@@ -69,6 +69,8 @@ function potato(){
         }else if(corns.includes(parseInt(user_turns[0]))){
             mid()
             
+        }else{
+            rndmpos();
         }
     }else if(turn>=2){
         if(win_check()){
@@ -192,7 +194,9 @@ function win_check(){
             }
         }
         if(count==3){
-            document.write("game Over")
+            //document.write("game Over")
+            alert('game over')
+            allow=false
         }
         if(count==2){
             if(checkempty(win_condition[j][point.indexOf(false)])){
@@ -261,4 +265,17 @@ function oppocorns(){
         //console.log('oppocorns False')
         return false
     }
+}
+function rndmpos(){
+    let random_pos=Math.ceil(Math.random()*9);
+    setTimeout(function(){
+        if(checkempty(random_pos)){
+            document.getElementById(random_pos).innerText = '0';
+            allow=true;
+            potato_turns.push(random_pos)
+        }else{
+            rndmpos();
+        }
+        
+    },700)
 }
