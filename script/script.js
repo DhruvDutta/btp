@@ -73,7 +73,7 @@ function potato(){
     }else if(turn>=2){
         if(win_check()){
             setTimeout(function(){
-                win.alpha=1;
+                //win.alpha=1;
                 document.getElementById(win_point).innerText = "0";
                 potato_turns.push(win_point);
                 allow=true
