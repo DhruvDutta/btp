@@ -205,7 +205,7 @@ function win_check(){
         if(count==3){
             //document.write("game Over")
             setTimeout(function(){
-                document.write(`<center><h1>Game Over</h1><img src="script/trump.png" height="50%"><center>`)
+                document.write(`<center><h1>Game Over</h1><img src="script/Trump.png" height="50%"><center>`)
             },700)
             allow=false
         }
