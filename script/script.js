@@ -93,14 +93,21 @@ function potato(){
             
         }else if(turn==2 && fc.includes(user_turns[1])){
             //console.log('trick')
-            setTimeout(function(){
-                if(checkempty(10-user_turns[0])){
+            if(checkempty(10-user_turns[0])){
+                setTimeout(function(){
                     document.getElementById(10-user_turns[0]).innerText = '0';
                     allow=true;
                     potato_turns.push(10-user_turns[0])
-                }
+                },700)
                 
-            },700)
+            }else{
+                if(corners_full()){
+                    facecenter();
+                }else{
+                    corner();
+                }
+            }
+            
         }
         
         else{
