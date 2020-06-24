@@ -138,9 +138,9 @@ function opposite(){
         },700)
     }else{
         if(oppocorns() || corners_full()){
-            facecenter()
+            facecenter();
         }else{
-            corner()
+            corner();
         }
     }
 }
@@ -216,7 +216,7 @@ function win_check(){
         if(count==3){
             //document.write("game Over")
             setTimeout(function(){
-                document.write(`<center><h1>Game Over</h1><img src="script/Trump.png" height="50%"><center>`)
+                document.write(`<center><h1>Game Over</h1><img src="script/king.gif" height="50%"><center>`)
             },700)
             allow=false
         }
@@ -252,7 +252,7 @@ function win_check(){
         }
         //console.log('count '+count)
         if(count==3){
-            document.write('<center><h1>You Win</h1><img src="script/good.png"><center>')
+            document.write('<center><h1>You Win</h1><img src="script/good.png"><center>');
         }
         if(count==2){
             if(checkempty(win_condition[j][point.indexOf(false)])){
@@ -275,7 +275,13 @@ function corners_full(){
     }
     return false
 }
-
+function fc_full(){
+    if(document.getElementById(2).innerText!='' && document.getElementById(4).innerText!='' && document.getElementById(6).innerText!='' && document.getElementById(8).innerText!=''){
+        //console.log('corners Full');
+        return true
+    }
+    return false
+}
 function oppocorns(){
     if(document.getElementById(1).innerText=='X' && document.getElementById(9).innerText=='X'){
         //console.log('oppocorns 1 9')
