@@ -79,7 +79,7 @@ function potato(){
             mid()
             
         }else{
-            rndmpos();
+            mid();
         }
     }else if(turn>=2){
         if(win_check()){
