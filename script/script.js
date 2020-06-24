@@ -109,7 +109,6 @@ function potato(){
             }
             
         }
-        
         else{
             //console.log('wincheck false')
             opposite();
